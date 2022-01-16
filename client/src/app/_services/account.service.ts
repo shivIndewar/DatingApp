@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {map} from 'rxjs/operators';
 import { user } from '../_models/user';
 import { ReplaySubject } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AccountService {
   private currenyUserSource = new ReplaySubject<user>(1);
   currentUser$ = this.currenyUserSource.asObservable();
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private toastr: ToastrService) { }
 
   login(model:any){
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
