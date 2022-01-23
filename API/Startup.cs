@@ -19,6 +19,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using API.Middleware;
 
 namespace API
 {
@@ -46,6 +47,7 @@ namespace API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // app.UseMiddleware<ExceptionMiddleware>();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
