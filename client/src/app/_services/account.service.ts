@@ -4,13 +4,14 @@ import {map} from 'rxjs/operators';
 import { user } from '../_models/user';
 import { ReplaySubject } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  baseUrl ='https://localhost:5001/api/';
+  baseUrl =environment.apiUrl;
   private currenyUserSource = new ReplaySubject<user>(1);
   currentUser$ = this.currenyUserSource.asObservable();
 
