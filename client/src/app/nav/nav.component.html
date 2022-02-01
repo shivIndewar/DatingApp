@@ -20,7 +20,8 @@
         </ul>
         
         <div class="btn-group" dropdown *ngIf="(accountService.currentUser$ | async) as user">
-            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+          <img src="{{user.photoUrl}}" alt="{{user.username}}">    
+          <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
                     aria-controls="dropdown-basic">
               Welcome {{user.username}} <span class="caret"></span>
             </button>
