@@ -95,6 +95,17 @@ export class MembersService {
     return this.http.delete(this.baseUrl+'users/delete-photo/'+photoId);
   }
 
+  addLike(username:string){
+    return this.http.post(this.baseUrl+'likes/'+username,{});
+  }
+
+  getLikes(predicate:string, pageNumber, pageSize){
+    let params = this.getPaginationHeaders(pageNumber,pageSize);
+    params = params.append('predicate', predicate);
+    console.log("called getLikes :" +params);
+      return this.getPaginatedLikesResult<Partial<Member[]>>(this.baseUrl+'likes',params);
+  }
+
   private getPaginatedResult<T>(url, params) {
     const paginatedResult : PaginatedResult<T> = new PaginatedResult<T>();
 
@@ -108,5 +119,19 @@ export class MembersService {
      })
    );
  }
+
+ private getPaginatedLikesResult<T>(url, params) {
+  const paginatedResult : PaginatedResult<T> = new PaginatedResult<T>();
+
+ return this.http.get<T>(this.baseUrl + 'likes', { observe: 'response', params }).pipe(
+   map(respose => {
+     paginatedResult.result = respose.body;
+     if (respose.headers.get('Pagination') !== null) {
+       paginatedResult.pagination = JSON.parse(respose.headers.get('Pagination'));
+     }
+     return paginatedResult;
+   })
+ );
+}
 
 }
