@@ -37,7 +37,7 @@
                 <div *ngIf="container==='Outbox'">
                     <img
                         class="img-circle rounded-circle mr-2" 
-                        src="{{message.recipientPhotoUrl || './assets.user.png'}}" 
+                        src="{{message.recipientPhotoUrl || './assets/user.png'}}" 
                         alt="{{message.recipientUsername}}">
                         <strong>{{message.recipinetUsername | titlecase}}</strong>
                 </div>
@@ -45,7 +45,7 @@
                 <div *ngIf="container !='Outbox'">
                     <img
                         class="img-circle rounded-circle mr-2" 
-                        src="{{message.senderPhotoUrl || './assets.user.png'}}" 
+                        src="{{message.senderPhotoUrl || './assets/user.png'}}" 
                         alt="{{message.senderUsername}}">
                         <strong>{{message.senderUsername | titlecase}}</strong>
                 </div>

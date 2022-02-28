@@ -1,5 +1,5 @@
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
+import { Message } from '../_models/message';
 import { Pagination } from '../_models/pagination';
 import { MessageService } from '../_services/message.service';
 
@@ -40,8 +40,7 @@ loading = false;
 
   deleteMessage(id : number){
     this.messageService.deleteMessage(id).subscribe(()=>{
-      this.messages.splice(this.messages.findIndex(m =>m.id === id.toString()), 1);
+      this.messages.splice(this.messages.findIndex(m =>m.id === id), 1);
     })
-
   }
 }

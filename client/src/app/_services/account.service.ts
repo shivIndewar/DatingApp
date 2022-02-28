@@ -5,6 +5,7 @@ import { user } from '../_models/user';
 import { ReplaySubject } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
+import { PresenceService } from './presence.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AccountService {
   private currenyUserSource = new ReplaySubject<user>(1);
   currentUser$ = this.currenyUserSource.asObservable();
 
-  constructor(private http : HttpClient, private toastr: ToastrService) { }
+  constructor(private http : HttpClient, private toastr: ToastrService, private presence : PresenceService) { }
 
   login(model:any){
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
@@ -23,6 +24,7 @@ export class AccountService {
         const user = response;
          if(response){
           this.setCurrentUser(user);
+          this.presence.createHubConnection(user);
         }
          return user;
       })
@@ -33,6 +35,7 @@ export class AccountService {
         map((user: user) =>{
           if(user){
             this.setCurrentUser(user);
+            this.presence.createHubConnection(user);
           }
         })
       )
@@ -49,6 +52,7 @@ export class AccountService {
     logout(){
       localStorage.removeItem('user');
       this.currenyUserSource.next(null);
+      this.presence.stopHubConnection();
     }
 
     getDecodedToken(token){
