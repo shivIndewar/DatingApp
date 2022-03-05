@@ -1,11 +1,9 @@
-import { HttpClient, HttpParams} from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Member } from '../_models/member';
-import { PaginatedResult } from '../_models/pagination';
-import { Photo } from '../_models/photo';
 import { user } from '../_models/user';
 import { UserParams } from '../_models/userParams';
 import { AccountService } from './account.service';
@@ -55,6 +53,7 @@ export class MembersService {
 
     return getPaginatedResult<Member[]>(this.baseUrl+'users', params, this.http)
       .pipe(map(response =>{
+        console.log(response);
         this.memberCache.set(Object.values(userParams).join('-'), response);
         return response;
       } ))
