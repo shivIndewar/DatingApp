@@ -1,14 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using API.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using API.Externsions;
-using API.Entities;
-using API.DTOs;
-using API.Helpers;
 
 namespace API.Controllers
 {
