@@ -2,13 +2,13 @@
     <h2 class=" test-center text-primary">Sign Up</h2>
     <hr>
 
-    <div class="form-group">
-        <label class="form-control" style="margin-right: 10px;" > I am a :</label>
-        <label class="radio-inline">
-               <input type="radio" value="male" formControlName='gender'>Male 
+    <div class="mb-3">
+        <label  style="margin-right: 20px;"> I am a:</label>
+        <label class="form-check-lable">
+               <input class="form-check-input me-2" type="radio" value="male" formControlName='gender'>Male 
         </label>
-        <label class="radio-inline">
-            <input type="radio" value="female" formControlName='gender' class="ml-3">Female 
+        <label class="form-check-lable">
+            <input class="form-check-input" type="radio" value="female" formControlName='gender' class="ms-3">Female 
      </label>
     </div>
 
@@ -37,9 +37,9 @@
         </ul>
       </div>      
 
-    <div class="form-group">
-        <button [disabled]="!registerForm.valid" class="btn btn-success mr-2" type="submit">Register</button>
-        <button class="btn btn-fefault mr-2" (click)="cancel()" >Cancel</button>
+    <div class="d-flex">
+        <button [disabled]="!registerForm.valid" class="btn btn-success me-2 flex-grow-1" type="submit">Register</button>
+        <button class="btn btn-default me-2 flex-grow-1" (click)="cancel()" >Cancel</button>
     </div>
 
 </form>
