@@ -8,14 +8,28 @@ namespace API.Externsions
         {
 
             services.AddIdentityCore<AppUser>( opt =>{
+                opt.User.RequireUniqueEmail = true;
+                opt.User.AllowedUserNameCharacters="abcdefghijklmnopqrstuvwxyz";
+                // opt.Password.RequiredLength= 15;
                 opt.Password.RequireNonAlphanumeric =false;
+                opt.Password.RequireLowercase = true;
+                opt.Password.RequireUppercase = true;
+                opt.Password.RequireDigit = true;
+                // opt.SignIn.RequireConfirmedEmail =true;
             }) 
                 .AddRoles<AppRole>()
                 .AddRoleManager<RoleManager<AppRole>>()
                 .AddSignInManager<SignInManager<AppUser>>()
                 .AddRoleValidator<RoleValidator<AppRole>>()
-                .AddEntityFrameworkStores<DataContext>();
+                .AddEntityFrameworkStores<DataContext>()
+                .AddDefaultTokenProviders();
+           
+            services.Configure<IdentityOptions>(opts =>
+            {
+                opts.User.RequireUniqueEmail = true;
 
+                opts.SignIn.RequireConfirmedEmail = true;
+            });
 
              services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(options =>

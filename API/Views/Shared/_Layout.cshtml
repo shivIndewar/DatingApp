@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="~/lib/limonte-sweetalert2/sweetalert2.min.css">
+      <script src="~/lib/limonte-sweetalert2/sweetalert2.all.js"></script>
+    @await RenderSectionAsync("Styles", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    
+</body>
+</html>

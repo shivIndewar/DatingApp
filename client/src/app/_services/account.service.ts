@@ -34,11 +34,16 @@ export class AccountService {
       return this.http.post(this.baseUrl + 'account/register',model).pipe(
         map((user: user) =>{
           if(user){
-            this.setCurrentUser(user);
-            this.presence.createHubConnection(user);
+            // this.setCurrentUser(user);
+            // this.presence.createHubConnection(user);
           }
         })
       )
+    }
+
+    forgotPassword(email:string){
+      console.log(email);
+      return this.http.post(this.baseUrl + 'account/forgotpassword/' + email, {});
     }
 
     setCurrentUser(user : user){

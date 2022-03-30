@@ -6,8 +6,10 @@ namespace API.Externsions
         {
              services.AddSingleton<PresenceTracker>();
              services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
+             services.Configure<EmailSettings>(config.GetSection("EmailSettings"));
              services.AddScoped<ITokenService, TokenService>(); 
              services.AddScoped<IPhotoService, PhotoService>();
+             services.AddScoped<IEmailHelper, EmailHelper>();
              services.AddScoped<IUnitOfWork, UnitOfWork>();   
              services.AddScoped<LogUserActivity>();
              services.AddAutoMapper(typeof(AutomapperProfiles).Assembly);

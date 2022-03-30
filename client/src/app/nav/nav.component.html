@@ -17,9 +17,9 @@
               <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
             </li>
           </ng-container>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" routerLink="/errors" routerLinkActive="active">Errors</a>
-          </li>
+          </li> -->
         </ul>
         
         <div class="btn-group" dropdown *ngIf="(accountService.currentUser$ | async) as user">
@@ -50,5 +50,6 @@
           placeholder="Password">
           <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
         </form>
+        <a routerLink="/forgotPassword"><button class="btn btn-success" style="margin-top: 10px; margin-left: 10px;" > Forgot Password</button></a>
       </div>
   </nav>

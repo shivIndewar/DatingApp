@@ -13,6 +13,7 @@ namespace API.Services
     public class PhotoService : IPhotoService
     {
         private readonly Cloudinary _cloudinary;
+     
         public PhotoService(IOptions<CloudinarySettings> config)
         {
             var acc = new Account(

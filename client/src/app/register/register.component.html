@@ -1,5 +1,5 @@
 <form [formGroup]='registerForm' (ngSubmit)="registerForm.valid && register()">
-    <h2 class=" test-center text-primary">Sign Up</h2>
+    <h2 class="test-center text-primary">Sign Up</h2>
     <hr>
 
     <div class="mb-3">
@@ -19,6 +19,10 @@
             [label]='"Known As"'></app-text-input>
     <app-date-input [formControl]='registerForm.controls["dateOfBirth"]' 
             [label]='"Date Of Birth"' [maxDate]="maxDate"></app-date-input>
+
+     <app-text-input [formControl]='registerForm.controls["email"]' 
+            [label]='"Email"'></app-text-input>
+
     <app-text-input [formControl]='registerForm.controls["city"]' 
             [label]='"City"'></app-text-input>
     <app-text-input [formControl]='registerForm.controls["country"]' 

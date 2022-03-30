@@ -2,12 +2,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
 });
 builder.Services.AddCors();
 builder.Services.AddIdentityServices(builder.Configuration);
+// builder.Services.Configure<IdentityOptions>(opts =>
+// {
+//     // opts.User.RequireUniqueEmail = true;
+//     // opts.SignIn.RequireConfirmedEmail = true;
+// });
 builder.Services.AddSignalR();
 
 
@@ -32,10 +38,10 @@ var app = builder.Build();
             app.UseStaticFiles();
 
                 app.MapControllers();
+                // app.services.AddControllers();
                 app.MapHub<PresenceHub>("hubs/presence");
                 app.MapHub<MessageHub>("hubs/message");
                 app.MapFallbackToController("Index", "Fallback");
-
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior",true);
             using var scope = app.Services.CreateScope();
             var Services = scope.ServiceProvider;
