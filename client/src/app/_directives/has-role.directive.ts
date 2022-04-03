@@ -14,7 +14,6 @@ export class HasRoleDirective implements OnInit {
   constructor(private viewContainerRef : ViewContainerRef, private tempateRef : TemplateRef<any>, 
       private accountService: AccountService) { 
         this.accountService.currentUser$.pipe(take(1)).subscribe(user =>{
-          console.log("called has role constructor");
           this.user = user;
         })
       }

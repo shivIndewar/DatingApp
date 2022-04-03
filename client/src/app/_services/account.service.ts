@@ -42,7 +42,6 @@ export class AccountService {
     }
 
     forgotPassword(email:string){
-      console.log(email);
       return this.http.post(this.baseUrl + 'account/forgotpassword/' + email, {});
     }
 

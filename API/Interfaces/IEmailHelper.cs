@@ -7,6 +7,6 @@ namespace API.Interfaces
 {
     public interface IEmailHelper
     {
-        void SendEmail(string userEmail, string confirmationLink, string token, string subject);
+        void SendEmail(string userEmail, string confirmationLink, string token, string subject, string templateName);
     }
 }

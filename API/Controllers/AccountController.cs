@@ -38,7 +38,7 @@ namespace API.Controllers
             {
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 var confirmationLink = Url.Action("ConfirmEmail", "Email", new { token, email = user.Email }, Request.Scheme);
-                _emailHelper.SendEmail(registerdto.Email,confirmationLink, token, "Confirm Email");
+                _emailHelper.SendEmail(registerdto.Email,confirmationLink, token, "Confirm Email","EmailConfirmation.html");
             }
              
             return new UserDto
@@ -97,7 +97,7 @@ namespace API.Controllers
                 {   
                       var token = await _userManager.GeneratePasswordResetTokenAsync(user);
                       var confirmationLink = Url.Action("ResetPassword", "ResetEmail", new { token, email = user.Email }, Request.Scheme);
-                      _emailHelper.SendEmail(email.Trim(), confirmationLink, token, "Reset Password");
+                      _emailHelper.SendEmail(email.Trim(), confirmationLink, token, "Reset Password", "ForgotPasswordConfirmation.html");
                 }
             }
             else

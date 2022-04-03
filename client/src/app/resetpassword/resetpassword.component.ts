@@ -17,10 +17,6 @@ export class ResetpasswordComponent implements OnInit {
 
   constructor(private accountService: AccountService, private router: Router, 
               private route:ActivatedRoute,private fb :FormBuilder) {
-
-                console.log(this.route.snapshot.params['email']);
-                console.log(this.route.snapshot.params['token']);
-
                }
 
   ngOnInit(): void {
@@ -30,7 +26,6 @@ export class ResetpasswordComponent implements OnInit {
   register(){
     this._email=this.route.snapshot.queryParams['email'];
     this._token=this.route.snapshot.queryParams['token'];
-    console.log(this._token, this._email);
   }
 
   initializeForm(){

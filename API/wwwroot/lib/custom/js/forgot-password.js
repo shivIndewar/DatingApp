@@ -7,7 +7,6 @@
 
 
 $(function () {
-    console.log("JS file is called"); 
     $("#submit").click(function (event) {
         event.preventDefault();
            
@@ -24,7 +23,6 @@ $(function () {
                 ResetPasswordData.Password = formData.Password;
                 ResetPasswordData.ConfirmPassword = formData.ConfirmPassword;
                 ResetPasswordData.Token = formData.Token;
-                console.log(ResetPasswordData.Token);
 
                 var action = $('form').attr("action");
 

@@ -30,7 +30,7 @@ export class PresenceService {
          
          this.hubConnection
               .start()
-              .catch(error=>console.log(error));
+              .catch();
 
          this.hubConnection.on("UserIsOnline", username =>{
           this.onlineUsers$.pipe(take(1)).subscribe(usernames =>{
