@@ -49,18 +49,17 @@ namespace API.Helpers
             templateName = "ForgotPasswordConfirmation.html";    
             try
             {
-                var strTemplateFilePath = _hostingEnvironment.ContentRootPath + "/EmailTemplates/" + templateName;
+                var strTemplateFilePath = Path.Combine(_hostingEnvironment.WebRootPath,templateName);
                 var reader = new StreamReader(strTemplateFilePath);
-                strMessage = strTemplateFilePath;
-                // strMessage = reader.ReadToEnd();
+                strMessage = reader.ReadToEnd();
                 reader.Close();
             }
             catch (Exception)
             {
                
             }
-            // strMessage = strMessage.Replace("[[[Title]]]", subject);
-            // strMessage = strMessage.Replace("[[[message]]]", confirmationLink);
+            strMessage = strMessage.Replace("[[[Title]]]", subject);
+            strMessage = strMessage.Replace("[[[message]]]", confirmationLink);
             return strMessage;
         }
  
