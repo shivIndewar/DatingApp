@@ -46,19 +46,21 @@ namespace API.Helpers
         private string BuildEmailTemplate(string confirmationLink, string subject, string templateName)
         {
             var strMessage = "";
+            templateName = "ForgotPasswordConfirmation.html";    
             try
             {
                 var strTemplateFilePath = _hostingEnvironment.ContentRootPath + "/EmailTemplates/" + templateName;
                 var reader = new StreamReader(strTemplateFilePath);
-                strMessage = reader.ReadToEnd();
+                strMessage = strTemplateFilePath;
+                // strMessage = reader.ReadToEnd();
                 reader.Close();
             }
             catch (Exception)
             {
                
             }
-            strMessage = strMessage.Replace("[[[Title]]]", subject);
-            strMessage = strMessage.Replace("[[[message]]]", confirmationLink);
+            // strMessage = strMessage.Replace("[[[Title]]]", subject);
+            // strMessage = strMessage.Replace("[[[message]]]", confirmationLink);
             return strMessage;
         }
  
